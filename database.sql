@@ -12,4 +12,13 @@ CREATE TABLE species (
     scientific_name VARCHAR(150) NOT NULL,
     discovery_date DATE NOT NULL,
     conservation_status VARCHAR(50) CHECK (conservation_status IN ('Endangered', 'Vulnerable', 'Historic'))
-)
+);
+
+CREATE TABLE sightings (
+    sighting_id SERIAL PRIMARY KEY,
+    ranger_id INT REFERENCES rangers(ranger_id),
+    species_id INT REFERENCES species(species_id),
+    sighting_time TIMESTAMP NOT NULL,
+    location VARCHAR(150) NOT NULL,
+    notes TEXT
+);

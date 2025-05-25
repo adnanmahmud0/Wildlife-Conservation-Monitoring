@@ -5,6 +5,8 @@ DROP TABLE IF EXISTS sightings;
 DROP TABLE IF EXISTS rangers;
 DROP TABLE IF EXISTS species;
 
+
+--All table creation
 -- Create rangers table
 CREATE TABLE rangers (
     ranger_id SERIAL PRIMARY KEY,
@@ -32,7 +34,7 @@ CREATE TABLE sightings (
 );
 
 
-
+-- All table data insertion
 -- Insert data into rangers
 INSERT INTO rangers (name, region) VALUES
 ('Alice Green', 'Northern Hills'),
@@ -55,7 +57,7 @@ INSERT INTO sightings (species_id, ranger_id, location, sighting_time, notes) VA
 
 
 
--- code for all queries
+-- All problem solution
 -- Problem 1
  INSERT INTO rangers (name, region) VALUES ('Derek Fox', 'Coastal Plains');
 

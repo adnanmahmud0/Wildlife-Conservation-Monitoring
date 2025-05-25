@@ -12,7 +12,6 @@ CREATE TABLE rangers (
     region VARCHAR (100) NOT NULL
 );
 
-
 -- Create species table
 CREATE TABLE species (
     species_id SERIAL PRIMARY KEY,
@@ -21,7 +20,6 @@ CREATE TABLE species (
     discovery_date DATE NOT NULL,
     conservation_status VARCHAR(50) CHECK (conservation_status IN ('Endangered', 'Vulnerable', 'Historic'))
 );
-
 
 -- Create sightings table
 CREATE TABLE sightings (
@@ -34,12 +32,12 @@ CREATE TABLE sightings (
 );
 
 
+
 -- Insert data into rangers
 INSERT INTO rangers (name, region) VALUES
 ('Alice Green', 'Northern Hills'),
 ('Bob White', 'River Delta'),
 ('Carol King', 'Mountain Range');
-
 
 -- Insert data into species
 INSERT INTO species (common_name, scientific_name, discovery_date, conservation_status) VALUES
@@ -47,7 +45,6 @@ INSERT INTO species (common_name, scientific_name, discovery_date, conservation_
 ('Bengal Tiger', 'Panthera tigris tigris', '1758-01-01', 'Endangered'),
 ('Red Panda', 'Ailurus fulgens', '1825-01-01', 'Vulnerable'),
 ('Asiatic Elephant', 'Elephas maximus indicus', '1758-01-01', 'Endangered');
-
 
 -- Insert data into sightings
 INSERT INTO sightings (species_id, ranger_id, location, sighting_time, notes) VALUES
@@ -57,29 +54,26 @@ INSERT INTO sightings (species_id, ranger_id, location, sighting_time, notes) VA
 (1, 2, 'Snowfall Pass', '2024-05-18 18:30:00', NULL);
 
 
+
+-- code for all queries
 -- Problem 1
  INSERT INTO rangers (name, region) VALUES ('Derek Fox', 'Coastal Plains');
-
 
 -- Problem 2
 SELECT COUNT (DISTINCT species_id) AS unique_species_count FROM sightings;
 
-
 -- Problem 3
 SELECT * FROM sightings WHERE location ILIKE '%Pass%';
-
 
 -- Problem 4
 SELECT r.name, COUNT(s.sighting_id) as total_sightings
 FROM rangers r LEFT JOIN sightings s ON r.ranger_id = s.ranger_id
 GROUP BY r.name
 
-
 -- Problem 5
 SELECT common_name
 FROM species sp LEFT JOIN sightings s ON sp.species_id = s.species_id
 WHERE s.species_id IS NULL;
-
 
 -- Problem 6
 SELECT common_name, sighting_time, name
@@ -89,11 +83,9 @@ JOIN rangers r ON s.ranger_id = r.ranger_id
 ORDER BY sighting_time DESC
 LIMIT 2;
 
-
 -- Problem 7
 UPDATE species SET conservation_status = 'Historic'
 WHERE discovery_date < '1800-01-01';
-
 
 -- Problem 8
 SELECT sighting_id,
@@ -103,7 +95,6 @@ SELECT sighting_id,
     ELSE 'Evening'
   END AS time_of_day
 FROM sightings;
-
 
 -- Problem 9
 DELETE FROM rangers

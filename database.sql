@@ -27,3 +27,8 @@ CREATE TABLE sightings (
 );
 
 
+-- Insert data into rangers
+INSERT INTO rangers (name, region) VALUES
+('Alice Green', 'Northern Hills'),
+('Bob White', 'River Delta'),
+('Carol King', 'Mountain Range');

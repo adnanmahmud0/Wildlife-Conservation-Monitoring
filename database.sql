@@ -55,3 +55,8 @@ INSERT INTO sightings (species_id, ranger_id, location, sighting_time, notes) VA
 
 -- Problem 2: Count unique species ever sighted
 SELECT COUNT (DISTINCT species_id) AS unique_species_count FROM sightings;
+
+-- Problem 3: Sightings where location includes 'Pass'
+SELECT * FROM sightings WHERE location ILIKE '%Pass%';
+
+
